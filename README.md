@@ -70,7 +70,8 @@
 [申请 API Key](https://www.trongrid.io/)
 
 ### 配置步骤：
-
+<!-- 
+下面的不会显示
 1. 打开文件 `vendor/fenguoz/tron-php/src/Api.php`
 2. 替换 `post` 方法如下：
 
@@ -96,6 +97,8 @@ public function post(string $endpoint, array $data = [], bool $returnAssoc = fal
     return $body;
 }
 ```
+ -->
+
 ## 📞 联系方式
 获取支持或购买源码，欢迎联系：
 

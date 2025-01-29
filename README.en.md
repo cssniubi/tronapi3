@@ -68,6 +68,9 @@ This project is not only suitable for beginners to learn blockchain principles b
 If you need to increase the API call limits, it is recommended to apply for an **API Key** to avoid restrictions.  
 [Apply for API Key](https://www.trongrid.io/)
 
+<!-- 
+下面的不会显示
+
 ### Configuration Steps:
 
 1. Open the file `vendor/fenguoz/tron-php/src/Api.php`
@@ -95,6 +98,9 @@ public function post(string $endpoint, array $data = [], bool $returnAssoc = fal
     return $body;
 }
 ```
+
+ -->
+
 ## 📞 Contact Us
 For support or to purchase the source code, feel free to contact:
 
