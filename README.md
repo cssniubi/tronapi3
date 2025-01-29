@@ -57,7 +57,7 @@
 
 1. **PHP 7.3 或 7.4** 环境
 2. 必须安装 **GMP 扩展**（否则转账会失败）
-3. 配置 **伪静态**  
+3. 配置 **伪静态**
 4. 运行目录设置为 `public` 文件夹
 5. 合约地址无需更改
 6. 配置好后，关闭调试模式，确保安全
@@ -99,4 +99,64 @@ public function post(string $endpoint, array $data = [], bool $returnAssoc = fal
 ## 📞 联系方式
 获取支持或购买源码，欢迎联系：
 
-Telegram: 🍭🍭🍭 [@king_orz](https://t.me/king_orz)   
+Telegram: 🍭🍭🍭 [@king_orz](https://t.me/king_orz)
+
+
+
+
+## Install
+
+```bash
+> composer require iexbase/tron-api --ignore-platform-reqs
+```
+## Requirements
+
+The following versions of PHP are supported by this version.
+
+* PHP 7.4
+
+## Example Usage
+
+```php
+use IEXBase\TronAPI\Tron;
+
+$fullNode = new \IEXBase\TronAPI\Provider\HttpProvider('https://api.trongrid.io');
+$solidityNode = new \IEXBase\TronAPI\Provider\HttpProvider('https://api.trongrid.io');
+$eventServer = new \IEXBase\TronAPI\Provider\HttpProvider('https://api.trongrid.io');
+
+try {
+    $tron = new \IEXBase\TronAPI\Tron($fullNode, $solidityNode, $eventServer);
+} catch (\IEXBase\TronAPI\Exception\TronException $e) {
+    exit($e->getMessage());
+}
+
+
+$this->setAddress('..');
+//Balance
+$tron->getBalance(null, true);
+
+// Transfer Trx
+var_dump($tron->send('to', 1.5));
+
+//Generate Address
+var_dump($tron->createAccount());
+
+//Get Last Blocks
+var_dump($tron->getLatestBlocks(2));
+
+//Change account name (only once)
+var_dump($tron->changeAccountName('address', 'NewName'));
+
+
+// Contract
+$tron->contract('Contract Address');
+
+
+
+```
+
+## Testing
+
+``` bash
+$ vendor/bin/phpunit
+```

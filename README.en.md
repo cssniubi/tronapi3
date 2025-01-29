@@ -56,7 +56,7 @@ This project is not only suitable for beginners to learn blockchain principles b
 
 1. **PHP 7.3 or 7.4** environment
 2. Install **GMP extension** (otherwise, transfers will fail)
-3. Configure **URL rewriting**  
+3. Configure **URL rewriting**
 4. Set the runtime directory to the `public` folder
 5. No need to modify the contract address
 6. After configuring, disable debug mode for security
@@ -99,3 +99,63 @@ public function post(string $endpoint, array $data = [], bool $returnAssoc = fal
 For support or to purchase the source code, feel free to contact:
 
 Telegram: 🍭🍭🍭 [@king_orz](https://t.me/king_orz)   
+
+
+
+
+## Install
+
+```bash
+> composer require iexbase/tron-api --ignore-platform-reqs
+```
+## Requirements
+
+The following versions of PHP are supported by this version.
+
+* PHP 7.4
+
+## Example Usage
+
+```php
+use IEXBase\TronAPI\Tron;
+
+$fullNode = new \IEXBase\TronAPI\Provider\HttpProvider('https://api.trongrid.io');
+$solidityNode = new \IEXBase\TronAPI\Provider\HttpProvider('https://api.trongrid.io');
+$eventServer = new \IEXBase\TronAPI\Provider\HttpProvider('https://api.trongrid.io');
+
+try {
+    $tron = new \IEXBase\TronAPI\Tron($fullNode, $solidityNode, $eventServer);
+} catch (\IEXBase\TronAPI\Exception\TronException $e) {
+    exit($e->getMessage());
+}
+
+
+$this->setAddress('..');
+//Balance
+$tron->getBalance(null, true);
+
+// Transfer Trx
+var_dump($tron->send('to', 1.5));
+
+//Generate Address
+var_dump($tron->createAccount());
+
+//Get Last Blocks
+var_dump($tron->getLatestBlocks(2));
+
+//Change account name (only once)
+var_dump($tron->changeAccountName('address', 'NewName'));
+
+
+// Contract
+$tron->contract('Contract Address');
+
+
+
+```
+
+## Testing
+
+``` bash
+$ vendor/bin/phpunit
+```
